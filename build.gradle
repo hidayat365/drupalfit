@@ -1,59 +1,53 @@
 buildscript {
     repositories {
         mavenCentral()
+        google()
+        jcenter()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.1'
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
-        classpath 'me.tatarka:gradle-retrolambda:2.4.+'
+        classpath 'com.android.tools.build:gradle:3.4.2'
     }
 }
 
-apply plugin: 'android-sdk-manager'
+/**
+ * This line applies the com.android.application plugin. Note that you should
+ * only apply the com.android.application plugin. Applying the Java plugin as
+ * well will result in a build error.
+ */
 apply plugin: 'com.android.library'
-apply plugin: 'retrolambda'
 
+/**
+ * This dependencies block includes any dependencies for the project itself. The
+ * following line includes all the JAR files in the libs directory.
+ */
 dependencies {
-    //compile fileTree(dir: 'src/main/libs', include: '*.jar')
-
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.retrofit:converter-jackson:1.9.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
-    compile 'com.squareup.okhttp:okhttp:2.2.0'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.5.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
-    //compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.2'
-    //compile 'com.netflix.rxjava:rxjava-android:0.20.+'
-    compile 'io.reactivex:rxjava:1.0.8'
-    //compile 'io.reactivex:rxandroid:0.23.+'
-    //compile project(':RxAndroid:rxandroid')
-    compile 'com.infstory:proguard-annotations:1.0.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.6.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    implementation 'io.reactivex:rxjava:1.0.8'
+    implementation 'com.infstory:proguard-annotations:1.0.1'
 }
 
 android {
-    buildToolsVersion "21.1.0"
-    compileSdkVersion 21
-
+    compileSdkVersion 28
     compileOptions {
-      sourceCompatibility JavaVersion.VERSION_1_8
-      targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
-
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 21
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode = Integer.parseInt(VERSION_CODE)
         versionName = VERSION_NAME
+        multiDexEnabled true
     }
-
     lintOptions {
         abortOnError false
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
 }
 
 allprojects {
@@ -64,4 +58,4 @@ allprojects {
     }
 }
 
-apply from: 'gradle-mvn-push.gradle'
+//apply from: 'gradle-mvn-push.gradle'

@@ -1,26 +1,24 @@
 package drupalfit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.squareup.okhttp.OkHttpClient;
+import okhttp3.OkHttpClient;
 
-import retrofit.Callback;
-import retrofit.ResponseCallback;
-import retrofit.RestAdapter;
-import retrofit.RequestInterceptor;
-import retrofit.RetrofitError;
-import retrofit.client.Client;
-import retrofit.client.OkClient;
-import retrofit.client.Response;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.GET;
-import retrofit.http.Multipart;
-import retrofit.http.POST;
-import retrofit.http.Part;
-import retrofit.http.Path;
-import retrofit.http.Streaming;
-import retrofit.mime.TypedFile;
-import com.squareup.okhttp.Request;
+import retrofit2.Callback;
+import retrofit2.RestAdapter;
+import retrofit2.RequestInterceptor;
+import retrofit2.RetrofitError;
+import retrofit2.client.Client;
+import retrofit2.client.OkClient;
+import retrofit2.Response;
+import retrofit2.http.GET;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
+import retrofit2.http.Streaming;
+import okhttp3.Request;
 
 import proguard.annotation.Keep;
 import proguard.annotation.KeepClassMembers;
